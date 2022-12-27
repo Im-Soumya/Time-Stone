@@ -1,15 +1,9 @@
-import Link from 'next/link'
 import Head from 'next/head'
-// import Image from 'next/image'
-// import { Inter } from '@next/font/google'
-// import styles from '../styles/Home.module.css'
 
-// const inter = Inter({ subsets: ['latin'] })
-import { ApolloClient, InMemoryCache, gql } from "@apollo/client"
+import HomePage from '../components/HomePage'
+import Footer from '../components/Footer'
 
-// import { allProducts } from "./data/products.json"
-
-export default function Home({ allProducts }) {
+export default function Home() {
   return (
     <>
       <Head>
@@ -20,68 +14,9 @@ export default function Home({ allProducts }) {
       </Head>
 
       <main>
-        <h1>All products</h1>
-        <div>
-          {
-            allProducts.map((product, index) => (
-              <div key={index}>
-                <Link href={`products/${product.slug}`}>
-                  <div>
-                    <img src={product.image.url} alt={product.name} />
-                  </div>
-                </Link>
-
-                <div>
-                  <h1>{product.name}</h1>
-                  <p>${product.price}</p>
-                  <button
-                    className='snipcart-add-item'
-                    data-item-id={product.id}
-                    data-item-price={product.price}
-                    // data-item-url={`products/${product.slug}`}
-                    data-item-image={product.image.url}
-                    data-item-name={product.name}
-                  >
-                    Add to Cart
-                  </button>
-                </div>
-              </div>
-            ))
-          }
-        </div>
+        <HomePage />
+        <Footer />
       </main>
     </>
   )
-}
-
-export async function getStaticProps() {
-  const client = new ApolloClient({
-    uri: process.env.CONTENT_API,
-    cache: new InMemoryCache()
-  })
-  const data = await client.query({
-    query: gql`
-      query ProductsQuery {
-        products {
-          id
-          name
-          brand
-          category
-          price
-          slug
-          image {
-            url
-          }
-        }
-      }
-    `
-  })
-
-  const allProducts = data.data.products
-
-  return {
-    props: {
-      allProducts
-    }
-  }
 }
