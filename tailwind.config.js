@@ -8,10 +8,17 @@ module.exports = {
     extend: {
       fontFamily: {
         marcellus: ['var(--font-marcellus)'],
-        figtree: ['var(--font-figtree)']
+        figtree: ['var(--font-figtree)'],
+        montserrat: ['var(--font-montserrat)']
       },
       borderWidth: {
         1: '1px'
+      },
+      colors: {
+        "chineseblack": "#0A0A0A",
+        "chineseblack2": "#0B0B0B",
+        "darkcharcoal": "#171717",
+        "smokyblack": "#0E0E0E",
       }
     },
   },

@@ -25,13 +25,13 @@ const HomePage = () => {
 
                     <div className='flex justify-center font-bold'>
                         <Link href="/">
-                            <h1 className='mr-9'>Home</h1>
+                            <h1 className='text-sm mr-10 md:mr-20'>Home</h1>
                         </Link>
                         <Link href="/products">
-                            <h1 className='mr-9'>Products</h1>
+                            <h1 className='text-sm mr-10 md:mr-20'>Products</h1>
                         </Link>
                         <Link href="/">
-                            <h1>About</h1>
+                            <h1 className='text-sm'>About</h1>
                         </Link>
                     </div>
 

@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import Image from "next/image";
+import Layout from "../../components/Layout";
 
 const product = ({ product }) => {
     return (
@@ -9,30 +10,32 @@ const product = ({ product }) => {
                 <title>{product.name}</title>
             </Head>
 
-            <div>
+            <Layout>
                 <div>
-                    <Image src={product.image.url} alt={product.name} width={500} height={500} />
-                </div>
-
-                <div>
-                    <h3>{product.name}</h3>
-                    <p>${product.price}</p>
-                    <div
-                        dangerouslySetInnerHTML={{ __html: product.description.html }}
-                    >
+                    <div>
+                        <Image src={product.image.url} alt={product.name} width={500} height={500} />
                     </div>
-                    <button
-                        className="snipcart-add-item"
-                        data-item-id={product.id}
-                        data-item-price={product.price}
-                        data-item-url={`products/${product.slug}`}
-                        data-item-image={product.image.url}
-                        data-item-name={product.name}
-                    >
-                        Add to cart
-                    </button>
+
+                    <div>
+                        <h3>{product.name}</h3>
+                        <p>${product.price}</p>
+                        <div
+                            dangerouslySetInnerHTML={{ __html: product.description.html }}
+                        >
+                        </div>
+                        <button
+                            className="snipcart-add-item"
+                            data-item-id={product.id}
+                            data-item-price={product.price}
+                            data-item-url={`products/${product.slug}`}
+                            data-item-image={product.image.url}
+                            data-item-name={product.name}
+                        >
+                            Add to cart
+                        </button>
+                    </div>
                 </div>
-            </div>
+            </Layout>
         </>
     )
 }
