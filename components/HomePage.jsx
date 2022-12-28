@@ -21,7 +21,9 @@ const HomePage = () => {
                 <img src="https://i.ibb.co/6B7BkL7/black-watch-large.jpg" alt="watch" className="w-full h-screen object-cover" />
 
                 <div className='absolute top-0 py-4 px-5 md:px-10 flex justify-between w-full backdrop-blur-sm'>
-                    <div className='left-5'>Logo</div>
+                    <Link href="/">
+                        <div className='left-5'>Logo</div>
+                    </Link>
 
                     <div className='flex justify-center font-bold'>
                         <Link href="/">
