@@ -13,8 +13,6 @@ const marcellus = Marcellus({
 })
 
 const product = ({ product }) => {
-    console.log(product)
-
     return (
         <>
             <Head>
