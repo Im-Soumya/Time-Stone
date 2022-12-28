@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { FaRegUserCircle } from "react-icons/fa";
+import Image from "next/image";
 import { BsArrowLeft } from "react-icons/bs";
+import { FaRegUserCircle } from "react-icons/fa";
 import { Marcellus, Figtree } from "@next/font/google";
 
 const figtree = Figtree({
@@ -18,22 +19,25 @@ const HomePage = () => {
     return (
         <div className={marcellus.className}>
             <div className='relative'>
-                <img src="https://i.ibb.co/6B7BkL7/black-watch-large.jpg" alt="watch" className="w-full h-screen object-cover" />
+                <img src="/images/black watch large.jpg" alt="watch" className="w-full h-screen object-cover" />
 
-                <div className='absolute top-0 py-4 px-5 md:px-10 flex justify-between w-full backdrop-blur-sm'>
+                <div className='absolute top-0 py-4 px-5 md:px-10 flex justify-between items-center w-full backdrop-blur-sm'>
                     <Link href="/">
-                        <div className='left-5'>Logo</div>
+                        <div className='flex items-center left-5'>
+                            <img src="/images/hourglass_crop.png" alt="logo" className="w-10 h-10 mr-4" />
+                            {/* <h1 className="text-xl">Time stone</h1> */}
+                        </div>
                     </Link>
 
-                    <div className='flex justify-center font-bold'>
+                    <div className='flex justify-center text-sm font-semibold tracking-wider'>
                         <Link href="/">
-                            <h1 className='text-sm mr-10 md:mr-20'>Home</h1>
+                            <h1 className='mr-10 md:mr-20'>Home</h1>
                         </Link>
                         <Link href="/products">
-                            <h1 className='text-sm mr-10 md:mr-20'>Products</h1>
+                            <h1 className='mr-10 md:mr-20'>Products</h1>
                         </Link>
                         <Link href="/">
-                            <h1 className='text-sm'>About</h1>
+                            <h1 className=''>About</h1>
                         </Link>
                     </div>
 
@@ -57,9 +61,11 @@ const HomePage = () => {
 
                     <div className='flex items-center justify-end group mt-6 md:mt-10'>
                         <BsArrowLeft className='hidden sm:flex mr-5 text-3xl text-stone-600 group-hover:-translate-x-3 group-hover:text-stone-100 duration-300' />
-                        <button className='flex items-center border-2 border-stone-600 py-2 md:py-3 px-5 md:px-7 text-stone-400 hover:border-stone-200 hover:text-stone-100 duration-300 rounded-md'>
-                            Shop Now
-                        </button>
+                        <Link href="/products">
+                            <div className='flex items-center border-2 border-stone-600 py-2 md:py-3 px-5 md:px-7 text-stone-400 hover:border-stone-200 hover:text-stone-100 duration-300 rounded-md'>
+                                Shop Now
+                            </div>
+                        </Link>
                     </div>
                 </div>
             </div>
