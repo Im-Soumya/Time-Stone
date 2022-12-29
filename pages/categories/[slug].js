@@ -1,4 +1,5 @@
 import Head from "next/head"
+import Link from "next/link"
 import { Marcellus } from "@next/font/google"
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client"
 
@@ -16,7 +17,7 @@ export default function category({ category, allCategories }) {
     return (
         <>
             <Head>
-                <title>Time stone | {category.name}</title>
+                <title>Time stone | Categories</title>
             </Head>
 
             <Layout>
@@ -25,11 +26,13 @@ export default function category({ category, allCategories }) {
 
                     <div>
                         <h1 className={`${marcellus.className} text-3xl mb-6 lg:my-5 ml-2 lg:mx-16`}>{category.name} Watches</h1>
-                        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:mx-14 lg:my-10">
+                        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-20 lg:mx-14 lg:my-10">
                             {
                                 category.products.map(product => (
                                     <div key={product.id}>
-                                        <Product product={product} />
+                                        <Link href={`/products/${product.slug}`}>
+                                            <Product product={product} />
+                                        </Link>
                                     </div>
                                 ))
                             }
@@ -90,6 +93,7 @@ export async function getStaticProps({ params }) {
                     products {
                         id
                         name
+                        slug
                         brand
                         category
                         price
