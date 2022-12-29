@@ -22,7 +22,7 @@ const Product = ({ product }) => {
                         </div>
                         <div className="pr-2">
                             {/* <button className={`${montserrat.className}`}>ADD TO CART</button> */}
-                            <p className="mt-3 tracking-wider font-bold text-xl">₹{product.price}</p>
+                            <p className="mt-3 tracking-wider font-bold text-xl">${product.price}</p>
                         </div>
                     </div>
                 </div>

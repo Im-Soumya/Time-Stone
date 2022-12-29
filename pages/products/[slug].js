@@ -26,10 +26,10 @@ const product = ({ product }) => {
                     </div>
 
                     <div className="lg:w-1/2 lg:mx-10">
-                        <h4 className="text-stone-500 font-semibold mb-2">{product.brand.toUpperCase()}</h4>
+                        <h4 className="text-stone-500 font-semibold mb-2"><span className="mr-2">{product.brand.toUpperCase()}</span> | <span className="ml-2">{product.category.toUpperCase()} WATCH</span></h4>
                         <h3 className={`${marcellus.className} text-3xl lg:text-5xl [text-shadow:_1px_4px_8px_rgb(0_0_0_/_40%)]`}>{product.name}</h3>
                         <div className="flex items-center justify-between my-10">
-                            <p className="text-2xl font-bold">${product.price}</p>
+                            <p className="text-2xl font-bold">₹{product.price}</p>
                             <CustomButton product={product} />
                         </div>
                         <div>

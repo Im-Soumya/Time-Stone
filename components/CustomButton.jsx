@@ -1,7 +1,7 @@
 import { BsArrowLeft } from "react-icons/bs"
 
 const CustomButton = ({ product }) => {
-    console.log(product.slug)
+
     return (
         <div className='flex items-center justify-end group'>
             <BsArrowLeft className='hidden lg:flex mr-5 text-3xl text-stone-600 group-hover:-translate-x-3 group-hover:text-stone-100 duration-300' />

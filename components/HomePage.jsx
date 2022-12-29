@@ -1,8 +1,10 @@
 import Link from "next/link";
-import Image from "next/image";
 import { BsArrowLeft } from "react-icons/bs";
 import { FaRegUserCircle } from "react-icons/fa";
 import { Marcellus, Figtree } from "@next/font/google";
+
+import Categories from "./Categories";
+import CategorySidebar from "./CategorySidebar";
 
 const figtree = Figtree({
     subsets: ['latin'],
@@ -15,7 +17,7 @@ const marcellus = Marcellus({
     variable: '--font-marcellus',
 })
 
-const HomePage = () => {
+const HomePage = ({ categories }) => {
     return (
         <div className={marcellus.className}>
             <div className='relative'>
@@ -25,7 +27,6 @@ const HomePage = () => {
                     <Link href="/">
                         <div className='flex items-center left-5'>
                             <img src="/images/hourglass_crop.png" alt="logo" className="w-10 h-10 mr-4" />
-                            {/* <h1 className="text-xl">Time stone</h1> */}
                         </div>
                     </Link>
 
@@ -70,36 +71,7 @@ const HomePage = () => {
                 </div>
             </div>
 
-            <div className='py-32 px-16 md:px-56'>
-                <h1 className='text-stone-300 text-center text-3xl md:text-5xl md:mb-6'>Categories</h1>
-                <h3 className='text-stone-300 text-center text-lg my-4'>Watches that show much more than just time.</h3>
-                <div className='py-4 grid grid-cols-2 gap-7 md:grid-cols-4'>
-                    <div className='bg-zinc-900 justify-self-center rounded-md opacity-60 hover:opacity-100 hover:scale-105 shadow-md hover:shadow-lg duration-200'>
-                        <img src="https://i.ibb.co/gS2nttW/seiko-Analog.png" alt="analog watch category" className='p-8' />
-                        <div>
-                            <h2 className='text-center text-lg md:text-xl pb-3'>Analog</h2>
-                        </div>
-                    </div>
-                    <div className='bg-zinc-900 justify-self-center rounded-md opacity-60 hover:opacity-100 hover:scale-105 shadow-md hover:shadow-lg duration-200'>
-                        <img src="https://i.ibb.co/7GX6W7r/hybrid.png" alt="digital watch category" className='p-4' />
-                        <div>
-                            <h2 className='text-center text-lg md:text-xl pb-3'>Digital</h2>
-                        </div>
-                    </div>
-                    <div className='bg-zinc-900 justify-self-center rounded-md opacity-60 hover:opacity-100 hover:scale-105 shadow-md hover:shadow-lg duration-200'>
-                        <img src="https://i.ibb.co/3zZNwRQ/chronograph.png" alt="chronograph watch category" className='p-3' />
-                        <div>
-                            <h2 className='text-center text-lg md:text-xl pb-3'>Chronograph</h2>
-                        </div>
-                    </div>
-                    <div className='bg-zinc-900  justify-self-center rounded-md py-1 opacity-60 hover:opacity-100 hover:scale-105 shadow-md hover:shadow-lg duration-200'>
-                        <img src="https://i.ibb.co/7GX6W7r/hybrid.png" alt="hybrid watch category" className='p-7' />
-                        <div>
-                            <h2 className='text-center text-lg md:text-xl pb-3'>Hybrid</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <Categories categories={categories} />
 
             <div className='text-stone-400 pb-32'>
                 <h1 className='text-center text-2xl mb-2 md:mb-3'>Find your <span className='text-white'>style.</span></h1>

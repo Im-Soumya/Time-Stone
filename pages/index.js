@@ -1,9 +1,10 @@
 import Head from 'next/head'
+import { ApolloClient, InMemoryCache, gql } from "@apollo/client"
 
 import HomePage from '../components/HomePage'
 import Footer from '../components/Footer'
 
-export default function Home() {
+export default function Home({ allCategories }) {
   return (
     <>
       <Head>
@@ -14,9 +15,40 @@ export default function Home() {
       </Head>
 
       <main className='bg-gradient-to-b from-chineseblack via-chineseblack2 to-darkcharcoal'>
-        <HomePage />
+        <HomePage categories={allCategories} />
         <Footer />
       </main>
     </>
   )
+}
+
+export async function getStaticProps() {
+
+  const client = new ApolloClient({
+    uri: process.env.CONTENT_API,
+    cache: new InMemoryCache(),
+  })
+
+  const data = await client.query({
+    query: gql`
+          query Query {
+              categories {
+                  id
+                  slug
+                  name
+                  image {
+                    url
+                  }
+              }
+          }
+      `
+  })
+
+  const allCategories = data.data.categories
+
+  return {
+    props: {
+      allCategories
+    }
+  }
 }

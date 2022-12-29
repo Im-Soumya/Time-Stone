@@ -1,13 +1,14 @@
 import Head from "next/head"
+import Link from "next/link.js"
 import { useState } from "react"
 import { BiChevronDown } from "react-icons/bi"
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client"
 
 import Layout from "../components/Layout.jsx"
+import Filter from "../components/Filter.jsx"
 import Product from "../components/Product.jsx"
 
-
-export default function Products({ allProducts }) {
+export default function Products({ allProducts, allCategories }) {
     const [input, setInput] = useState('')
 
     if (input) {
@@ -31,8 +32,18 @@ export default function Products({ allProducts }) {
                                 <>
                                     <div className="tracking-tight my-7 lg:my-12">
                                         <div className="flex items-center ml-2 lg:ml-0 text-lg lg:text-sm font-semibold mb-1 lg:mb-3 text-stone-200">Categories<BiChevronDown className="ml-2 text-xl" /></div>
-                                        <h3 className="ml-5 lg:ml-3 mb-1 lg:text-sm lg:mb-4 text-neutral-400 hover:text-white">New Arrivals</h3>
-                                        <h3 className="ml-5 lg:ml-3 lg:text-sm lg:mb-4 text-neutral-400 hover:text-white">Featured</h3>
+                                        <Link href="/products">
+                                            <h1 className="ml-5 lg:ml-3 mb-1 lg:text-sm lg:mb-4 text-neutral-400 hover:text-white">All items</h1>
+                                        </Link>
+                                        {
+                                            allCategories.map(category => (
+                                                <div key={category.id}>
+                                                    <Link href={`categories/${category.slug}`}>
+                                                        <h3 className="ml-5 lg:ml-3 mb-1 lg:text-sm lg:mb-4 text-neutral-400 hover:text-white">{category.name}</h3>
+                                                    </Link>
+                                                </div>
+                                            ))
+                                        }
                                     </div>
 
                                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:mx-10 lg:my-10">
@@ -45,12 +56,7 @@ export default function Products({ allProducts }) {
                                         }
                                     </div>
 
-                                    <div className="tracking-tight my-7 lg:my-12">
-                                        <div className="flex items-center ml-2 text-lg lg:text-sm font-semibold mb-1 lg:mb-3 text-stone-200">Relevance<BiChevronDown className="ml-2 text-xl" /></div>
-                                        <h3 className="ml-5 lg:ml-3 mb-1 lg:mb-4 text-neutral-400 text-sm hover:text-white">Trending</h3>
-                                        <h3 className="ml-5 lg:ml-3 mb-1 lg:mb-4 text-neutral-400 text-sm hover:text-white">Price: Low to high</h3>
-                                        <h3 className="ml-5 lg:ml-3 text-neutral-400 text-sm hover:text-white">Price: High to low</h3>
-                                    </div>
+                                    <Filter />
                                 </>
                             ) :
                             (
@@ -74,7 +80,7 @@ export async function getStaticProps() {
         cache: new InMemoryCache(),
     })
 
-    const data = await client.query({
+    const productsData = await client.query({
         query: gql`
             query ProductsQuery {
                 products {
@@ -92,11 +98,25 @@ export async function getStaticProps() {
         `
     })
 
-    const allProducts = data.data.products
+    const categoriesData = await client.query({
+        query: gql`
+            query CategoriesQuery {
+                categories {
+                    id
+                    name
+                    slug
+                }
+            }
+        `
+    })
+
+    const allProducts = productsData.data.products
+    const allCategories = categoriesData.data.categories
 
     return {
         props: {
-            allProducts
+            allProducts,
+            allCategories
         }
     }
 }
