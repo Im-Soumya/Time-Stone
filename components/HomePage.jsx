@@ -76,13 +76,13 @@ const HomePage = ({ categories }) => {
                     </div>
                 </div>
 
-                <div className='absolute top-1/3 md:top-1/3 left-4 w-[200px] md:w-1/2 md:pl-3 text-stone-400'>
+                <div className='absolute top-1/4 md:top-1/3 left-4 w-[200px] md:w-1/2 md:pl-3 text-stone-400'>
                     <h1 className='text-white pt-7 md:pt-0 mb-1 md:mb-4 md:text-5xl tracking-tighter md:tracking-normal'>The perfect moment,</h1>
                     <h2 className='mb-2 md:mb-4 md:text-3xl tracking-wider'>between <span className='text-white text-3xl md:text-[48px]'>past</span></h2>
                     <h3 className='md:text-3xl tracking-wider'>and <span className='text-white text-3xl md:text-[48px]'>future</span>.</h3>
                 </div>
 
-                <div className='absolute text-sm top-[28%] right-2 text-right md:pr-7'>
+                <div className='absolute text-sm top-1/2 md:top-[28%] right-2 text-right md:pr-7'>
                     <div>
                         <div className='flex justify-end'>
                             <div className={`${figtree.className} bg-stone-400 text-center text-xs text-black font-bold px-2 py-1 mb-3 md:mb-6 rounded-sm`}>NEW MODEL</div>
