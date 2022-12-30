@@ -15,7 +15,7 @@ const Product = ({ product }) => {
                 <div className="p-12">
                     <Image src={product.image.url} alt={product.name} width={500} height={500} className="group-hover:scale-110 duration-700" />
                 </div>
-                <div className="flex px-2 py-2 border-t-1 border-stone-800">
+                <div className="flex p-2 border-t-1 border-stone-800">
                     <div className="pl-2">
                         <p className="text-xs text-stone-600 font-bold">{product.brand.toUpperCase()}</p>
                         <h1 className={`${marcellus.className} line-clamp-1`}>{product.name}</h1>

@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { BsArrowLeft } from "react-icons/bs";
 import { FaRegUserCircle } from "react-icons/fa";
-import { Marcellus, Figtree } from "@next/font/google";
+import { Marcellus, Figtree, Montserrat } from "@next/font/google";
 
+import useAuth from "../libs/firebaseAuthHook";
 import Categories from "./Categories";
-import CategorySidebar from "./CategorySidebar";
+import { signInWithPopup, signOut } from "firebase/auth";
+import { auth, provider } from "../libs/firebase";
 
 const figtree = Figtree({
     subsets: ['latin'],
@@ -17,7 +19,26 @@ const marcellus = Marcellus({
     variable: '--font-marcellus',
 })
 
+const montserrat = Montserrat({
+    subsets: ['latin'],
+    variable: '--font-montserrat'
+})
+
 const HomePage = ({ categories }) => {
+    const { user } = useAuth()
+
+    const handleLogin = () => {
+        if (!user) {
+            signInWithPopup(auth, provider)
+                .then(res => {
+                    console.log(res.user)
+                })
+                .catch(e => console.log(e.message))
+        } else {
+            signOut(auth)
+        }
+    }
+
     return (
         <div className={marcellus.className}>
             <div className='relative'>
@@ -42,7 +63,17 @@ const HomePage = ({ categories }) => {
                         </Link>
                     </div>
 
-                    <FaRegUserCircle className='right-5 text-xl' />
+                    <div onClick={handleLogin} className="cursor-pointer hover:scale-110 duration-100">
+                        {
+                            user ? (
+                                <div className="w-7 h-7 rounded-full bg-stone-400 text-stone-900">
+                                    <p className={`${montserrat.className} h-full pr-0.5 font-bold flex justify-center items-center`}>{user?.displayName.charAt(0).toUpperCase()}</p>
+                                </div>
+                            ) : (
+                                <FaRegUserCircle className="text-xl" />
+                            )
+                        }
+                    </div>
                 </div>
 
                 <div className='absolute top-1/3 md:top-1/3 left-4 w-[200px] md:w-1/2 md:pl-3 text-stone-400'>

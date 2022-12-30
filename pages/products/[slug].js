@@ -22,7 +22,7 @@ const product = ({ product }) => {
             <Layout>
                 <div className="mx-12 my-7 min-h-screen flex flex-col lg:flex-row">
                     <div className="bg-smokyblack lg:bg-transparent mb-7 lg:mb-0 rounded-md">
-                        <Image src={product.image.url} alt={product.name} width={600} height={600} className="mx-auto lg:p-6" />
+                        <Image src={product.image.url} alt={product.name} width={600} height={600} className="mx-auto lg:px-14 lg:pb-6 lg:pt-4" />
                     </div>
 
                     <div className="lg:w-1/2 lg:mx-10">

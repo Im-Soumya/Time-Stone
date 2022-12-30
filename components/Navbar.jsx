@@ -20,8 +20,7 @@ const Navbar = () => {
         if (!user) {
             signInWithPopup(auth, provider)
                 .then((res) => {
-                    const user = res.user
-                    console.log(user)
+                    console.log(res.user)
                 })
                 .catch(e => console.log(e.message))
         } else {
