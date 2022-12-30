@@ -1,6 +1,5 @@
 import Head from "next/head"
 import Link from "next/link.js"
-import { useRouter } from "next/router.js"
 import { useState } from "react"
 import { BiChevronDown } from "react-icons/bi"
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client"
@@ -10,21 +9,10 @@ import Filter from "../components/Filter.jsx"
 import Product from "../components/Product.jsx"
 
 export default function Products({ allProducts, allCategories }) {
-    const router = useRouter()
-
     const [input, setInput] = useState('')
-    const [option, setOption] = useState('products')
 
     if (input) {
         allProducts = allProducts.filter(product => product.name.toLowerCase().includes(input))
-    }
-
-    const handleChange = (e) => {
-        setOption(e.target.value)
-    }
-
-    const push = () => {
-        router.push(`categories/${option}`)
     }
 
     return (
@@ -36,13 +24,15 @@ export default function Products({ allProducts, allCategories }) {
             </Head>
 
             <Layout>
+                <div className="mx-12 lg:mx-48">
+                    <input type="text" value={input} placeholder="Search for products..." className="w-full py-2 mt-6 rounded-sm indent-3 bg-transparent border-1 border-stone-500" onChange={(e) => setInput(e.target.value)} />
+                </div>
                 <div className="mx-12 flex flex-col lg:flex-row">
-                    <input type="text" value={input} placeholder="Search for products..." className="py-2 mt-2 rounded-sm indent-3 bg-transparent border-1 border-stone-500 lg:hidden" onChange={(e) => setInput(e.target.value)} />
                     {
                         allProducts.length > 0 ?
                             (
                                 <>
-                                    <div className="tracking-tight my-7 lg:my-12">
+                                    <div className="tracking-tight my-7 lg:mb-12">
                                         <div className=" hidden lg:flex items-center ml-2 lg:ml-0 text-lg lg:text-sm font-semibold mb-1 lg:mb-3 text-stone-200">
                                             <h1 className="hidden lg:flex">Categories<BiChevronDown className="ml-2 text-xl" /></h1>
                                         </div>

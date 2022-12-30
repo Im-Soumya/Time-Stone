@@ -22,14 +22,14 @@ const product = ({ product }) => {
             <Layout>
                 <div className="mx-12 my-7 min-h-screen flex flex-col lg:flex-row">
                     <div className="bg-smokyblack lg:bg-transparent mb-7 lg:mb-0 rounded-md">
-                        <Image src={product.image.url} alt={product.name} width={600} height={600} className="mx-auto lg:p-2" />
+                        <Image src={product.image.url} alt={product.name} width={600} height={600} className="mx-auto lg:p-6" />
                     </div>
 
                     <div className="lg:w-1/2 lg:mx-10">
                         <h4 className="text-stone-500 font-semibold mb-2"><span className="mr-2">{product.brand.toUpperCase()}</span> | <span className="ml-2">{product.category.toUpperCase()} WATCH</span></h4>
                         <h3 className={`${marcellus.className} text-3xl lg:text-5xl [text-shadow:_1px_4px_8px_rgb(0_0_0_/_40%)]`}>{product.name}</h3>
                         <div className="flex items-center justify-between my-10">
-                            <p className="text-2xl font-bold">₹{product.price}</p>
+                            <p className="text-2xl font-bold">${product.price}</p>
                             <CustomButton product={product} />
                         </div>
                         <div>
