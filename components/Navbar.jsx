@@ -1,8 +1,12 @@
 import Link from "next/link";
-import { useState } from "react";
+import { signInWithPopup, signOut } from "firebase/auth";
 import { Marcellus } from "@next/font/google";
+
 import { FiShoppingBag } from "react-icons/fi"
 import { FaRegUserCircle } from "react-icons/fa"
+
+import useAuth from "../libs/firebaseAuthHook";
+import { auth, provider } from "../libs/firebase"
 
 const marcellus = Marcellus({
     subsets: ['400'],
@@ -10,7 +14,20 @@ const marcellus = Marcellus({
 })
 
 const Navbar = () => {
-    const [input, setInput] = useState('')
+    const { user, loading } = useAuth()
+
+    const handleLogin = async () => {
+        if (!user) {
+            signInWithPopup(auth, provider)
+                .then((res) => {
+                    const user = res.user
+                    console.log(user)
+                })
+                .catch(e => console.log(e.message))
+        } else {
+            signOut(auth)
+        }
+    }
 
     return (
         <nav className="w-full py-3 px-8 flex justify-between items-center backdrop-blur-sm">
@@ -21,10 +38,6 @@ const Navbar = () => {
                 </div>
             </Link>
 
-            {/* <div className="hidden lg:flex">
-                <input type="text" value={input} placeholder="Search for products..." className="py-2 mt-2 rounded-sm indent-3 bg-transparent border-1 border-stone-500" onChange={(e) => setInput(e.target.value)} />
-            </div> */}
-
             <div className="flex items-center">
                 <h1 className="mr-5 hover:text-white hover:border-b-1 hover:border-white duration-100">About</h1>
                 <Link href="/products">
@@ -34,8 +47,16 @@ const Navbar = () => {
                     <FiShoppingBag className="text-xl group-hover:text-stone-300" />
                     <p className="absolute bottom-0 left-0 w-4 h-4 pb-1 bg-white text-xs text-center rounded-full text-black font-bold snipcart-items-count">0</p>
                 </div>
-                <div className="hover:scale-110 duration-100">
-                    <FaRegUserCircle className="text-xl" />
+                <div onClick={handleLogin} className="cursor-pointer hover:scale-110 duration-100">
+                    {
+                        user ? (
+                            <div className="w-7 h-7 rounded-full bg-stone-400 text-stone-900">
+                                <p className={`${marcellus.className} h-full pr-0.5 font-bold flex justify-center items-center`}>{user?.displayName.charAt(0).toUpperCase()}</p>
+                            </div>
+                        ) : (
+                            <FaRegUserCircle className="text-xl" />
+                        )
+                    }
                 </div>
             </div>
         </nav>
