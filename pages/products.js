@@ -69,7 +69,7 @@ export default function Products({ allProducts, allCategories }) {
                             ) :
                             (
                                 <>
-                                    <div className="h-screen">
+                                    <div className="mx-40 h-screen">
                                         <h1 className="text-center text-2xl font-semibold mt-10">This item is unavailable.</h1>
                                     </div>
                                 </>
