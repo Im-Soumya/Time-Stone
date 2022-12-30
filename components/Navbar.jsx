@@ -51,7 +51,7 @@ const Navbar = () => {
                     {
                         user ? (
                             <div className="w-7 h-7 rounded-full bg-stone-400 text-stone-900">
-                                <p className={`${marcellus.className} h-full pr-0.5 font-bold flex justify-center items-center`}>{user?.displayName.charAt(0).toUpperCase()}</p>
+                                <p className="h-full pr-0.5 font-bold flex justify-center items-center">{user?.displayName.charAt(0).toUpperCase()}</p>
                             </div>
                         ) : (
                             <FaRegUserCircle className="text-xl" />
