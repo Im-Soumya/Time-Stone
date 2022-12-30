@@ -29,11 +29,11 @@ const Navbar = () => {
     }
 
     return (
-        <nav className="w-full py-3 px-8 flex justify-between items-center backdrop-blur-sm">
+        <nav className="w-full py-3 px-8 flex justify-between items-center backdrop-blur-sm text-sm">
             <Link href="/">
                 <div className='flex items-center left-5'>
                     <img src="/images/hourglass_crop.png" alt="logo" className="w-7 h-7 mr-3" />
-                    <h1 className={`${marcellus.className} text-lg`}>Time stone</h1>
+                    <h1 className={`${marcellus.className}`}>Time stone</h1>
                 </div>
             </Link>
 
@@ -43,7 +43,7 @@ const Navbar = () => {
                     <h1 className="mr-7 hover:text-white hover:border-b-1 hover:border-white duration-100">Shop</h1>
                 </Link>
                 <div className="group mr-5 p-2 relative flex items-center snipcart-checkout cursor-pointer hover:scale-110 duration-100">
-                    <FiShoppingBag className="text-xl group-hover:text-stone-300" />
+                    <FiShoppingBag className="lg:text-xl group-hover:text-stone-300" />
                     <p className="absolute bottom-0 left-0 w-4 h-4 pb-1 bg-white text-xs text-center rounded-full text-black font-bold snipcart-items-count">0</p>
                 </div>
                 <div onClick={handleLogin} className="cursor-pointer hover:scale-110 duration-100">
@@ -53,7 +53,7 @@ const Navbar = () => {
                                 <p className="h-full pr-0.5 font-bold flex justify-center items-center">{user?.displayName.charAt(0).toUpperCase()}</p>
                             </div>
                         ) : (
-                            <FaRegUserCircle className="text-xl" />
+                            <FaRegUserCircle className="lg:text-xl" />
                         )
                     }
                 </div>

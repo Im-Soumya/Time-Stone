@@ -38,13 +38,13 @@ export default function Products({ allProducts, allCategories }) {
                                         </div>
                                         <div className="flex lg:flex-col py-3 justify-between px-5 lg:px-0 border-1 lg:border-0 border-stone-800 rounded-sm">
                                             <Link href="/products">
-                                                <h1 className="lg:ml-3 text-sm lg:mb-4 text-neutral-400 hover:text-white">All items</h1>
+                                                <h1 className="lg:ml-3 text-xs lg:text-sm lg:mb-4 text-neutral-400 hover:text-white">All items</h1>
                                             </Link>
                                             {
                                                 allCategories.map(category => (
                                                     <div key={category.id}>
                                                         <Link href={`categories/${category.slug}`}>
-                                                            <h3 className="lg:ml-3 text-sm lg:mb-4 text-neutral-400 hover:text-white">{category.name}</h3>
+                                                            <h3 className="lg:ml-3 text-xs md:text-sm lg:mb-4 text-neutral-400 hover:text-white">{category.name}</h3>
                                                         </Link>
                                                     </div>
                                                 ))
