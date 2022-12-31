@@ -33,7 +33,7 @@ const Navbar = () => {
             <Link href="/">
                 <div className='flex items-center left-5'>
                     <img src="/images/hourglass_crop.png" alt="logo" className="w-7 h-7 mr-3" />
-                    <h1 className={`${marcellus.className}`}>Time stone</h1>
+                    <h1 className={`${marcellus.className} lg:text-lg`}>Time stone</h1>
                 </div>
             </Link>
 
