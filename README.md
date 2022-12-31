@@ -33,7 +33,7 @@
 
 ## How to install and run this project
 
-Instructions
+**Instructions:**
 
 You can fork this project if you want. 
 
@@ -52,7 +52,7 @@ Now enter the following command to run the project locally
 npm run dev
 ```
 
-### Creator
+## Creator
 
 **Soumya**
 - [Twitter](https://twitter.com/iamsoumyass)
