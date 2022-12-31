@@ -35,6 +35,8 @@
 
 Instructions
 
+You can fork this project if you want. 
+
 Open your terminal and run the following commands
 ```
 git clone https://github.com/Im-Soumya/Time-Stone.git
@@ -53,6 +55,6 @@ npm run dev
 ### Creator
 
 **Soumya**
-[Twitter](https://twitter.com/iamsoumyass)
-[Linkedin](https://www.linkedin.com/in/soumya-mukherjee-88a551248/)
-[Github](https://github.com/Im-Soumya")
+- [Twitter](https://twitter.com/iamsoumyass)
+- [Linkedin](https://www.linkedin.com/in/soumya-mukherjee-88a551248/)
+- [Github](https://github.com/Im-Soumya")
